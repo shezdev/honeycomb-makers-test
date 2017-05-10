@@ -19,9 +19,11 @@ describe "Order" do
     context "for the current order" do
       it "adds the broadcaster and delivery method to an items list" do
         order = Order.new(material)
-        list = []
+        broadcaster_1 = "A"
+        delivery_1 = "B"
+        items = []
         order.add(broadcaster_1, standard_delivery)
-        expect(list).not_to be.empty
+        expect { (items).to eq("A", "B") }
       end
     end
   end
