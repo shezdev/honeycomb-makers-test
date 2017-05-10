@@ -10,7 +10,11 @@ describe "Order" do
     context "when created" do
       it "has an advertising material object" do
         order = Order.new(material)
-        expect {(order.material.identifier).to eq('WNP/SWCL001/010')}
+        expect { (order.material.identifier).to eq('WNP/SWCL001/010') }
+      end
+      it "has an empty items array" do
+        order = Order.new(material)
+        expect { (order.items).should be_empty }
       end
     end
   end
