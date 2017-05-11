@@ -28,6 +28,16 @@ describe "Promotion" do
       end
     end
 
+    describe "#over30get10Off" do
+      context "when invoked" do
+        it "receives the items from the order" do
+        test_order = order.new
+        expect(test_order).to respond_to(:over30get10Off).with(1).argument
+      end
+    end
+
+    end
+
 
   end
 end
