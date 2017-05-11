@@ -1,9 +1,9 @@
-require_relative 'printer'
 require_relative 'promotion'
+require_relative 'printer'
 
 class Order
-  include Printer
   include Promotion
+  include Printer
 
   attr_accessor :material, :items
 

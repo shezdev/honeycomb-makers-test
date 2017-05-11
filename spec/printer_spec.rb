@@ -4,7 +4,7 @@ describe "Printer module" do
   let(:order) { Class.new { include Printer } }
   let(:broadcaster_3) { Broadcaster.new 3, 'Discovery' }
   let (:express_delivery) {Delivery.new :express, 20}
-  describe "#output" do
+   describe "#output" do
     context "when invoked" do
       it "takes the items in the order and the order subtotal" do
         test_order = order.new

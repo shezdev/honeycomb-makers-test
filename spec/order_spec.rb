@@ -69,7 +69,7 @@ describe "Order" do
         order = Order.new(material)
         order.add broadcaster_2, express_delivery
         order.add broadcaster_3, express_delivery
-        expect(order.checkPromotion).to eq(30)
+        expect(order.checkPromotion).to eq(10)
       end
     end
   end
