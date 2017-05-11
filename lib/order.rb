@@ -26,9 +26,12 @@ class Order
   end
 
   def checkPromotion
-    expDeliveryDownTo15(items)
+    promotion1 = expDeliveryDownTo15(items)
+    if promotion1 > 0
+      addDiscount(promotion1)
+    end
   end
-
+  
   def addDiscount(discount)
     total = getSubtotal - discount
   end
