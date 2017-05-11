@@ -17,7 +17,7 @@ describe "Promotion" do
         # order1 = order.new(material)
         order.add(broadcaster_1, express_delivery)
         order.add(broadcaster_3, express_delivery)
-        expect(order.expDeliveryDownTo15).to eq(10)
+        expect(order.expDeliveryDownTo15(order.items)).to eq(10)
         end
       end
     end
