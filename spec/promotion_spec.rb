@@ -1,0 +1,3 @@
+describe "Promotion" do
+
+end
