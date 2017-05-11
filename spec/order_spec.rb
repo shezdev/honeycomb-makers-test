@@ -39,7 +39,7 @@ describe "Order" do
         order = Order.new(material)
         order.add(broadcaster_1, standard_delivery)
         order.add(broadcaster_2, standard_delivery)
-        expect { (order.subtotal).to eq(20) }
+        expect (order.getTotalCost).to eq(20)
       end
     end
   end
