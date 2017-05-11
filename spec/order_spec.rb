@@ -5,7 +5,9 @@ describe "Order" do
   let(:material) { Material.new 'WNP/SWCL001/010' }
   let(:broadcaster_1) { Broadcaster.new 1, 'Viacom' }
   let(:broadcaster_2) { Broadcaster.new 2, 'Disney' }
+  let(:broadcaster_3) { Broadcaster.new 3, 'Discovery' }
   let (:standard_delivery) {Delivery.new :standard, 10}
+  let (:express_delivery) {Delivery.new :express, 20.0}
 
   describe "#initialize" do
     context "when created" do
@@ -45,6 +47,18 @@ describe "Order" do
         order.add(broadcaster_1, standard_delivery)
         order.add(broadcaster_2, standard_delivery)
         expect(order.getSubtotal).to eq(20)
+      end
+    end
+  end
+
+  describe "#print_output" do
+    context "returns order output from Printer module" do
+      it "prints the order" do
+        order = Order.new(material)
+        items = [[broadcaster_3, express_delivery]]
+        subtotal = 20.0
+        material_id = 'WNP/SWCL001/010'
+        expect(order.print_output(items, subtotal, material_id)).to be_a(String)
       end
     end
   end
