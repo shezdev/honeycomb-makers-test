@@ -1,8 +1,10 @@
 require_relative 'printer'
+require_relative 'promotion'
 
 class Order
   include Printer
-
+  include Promotion
+  
   attr_accessor :material, :items
 
   def initialize(material)
