@@ -1,4 +1,7 @@
+require_relative 'printer'
+
 class Order
+  include Printer
 
   attr_accessor :material, :items
 
