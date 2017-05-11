@@ -5,7 +5,7 @@ describe "Order" do
   let(:material) { Material.new 'WNP/SWCL001/010' }
   let(:broadcaster_1) { Broadcaster.new 1, 'Viacom' }
   let(:broadcaster_2) { Broadcaster.new 2, 'Disney' }
-  let (:standard_delivery) {Delivery.new :standard, 10.0}
+  let (:standard_delivery) {Delivery.new :standard, 10}
 
   describe "#initialize" do
     context "when created" do
@@ -39,7 +39,7 @@ describe "Order" do
         order = Order.new(material)
         order.add(broadcaster_1, standard_delivery)
         order.add(broadcaster_2, standard_delivery)
-        expect (order.getTotalCost).to eq(20)
+        expect(order.getSubtotal).to eq(20)
       end
     end
   end

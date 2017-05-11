@@ -11,4 +11,8 @@ class Order
     items << [broadcaster, delivery]
   end
 
+  def getSubtotal
+    subtotal = items.inject(0) { |memo, (_, delivery)| memo += delivery.price }
+  end
+
 end
