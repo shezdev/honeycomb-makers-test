@@ -13,13 +13,20 @@ describe "Printer module" do
 
       it "prints an order" do
         test_order = order.new
+        express_delivery = Delivery.new(:express, 20.0)
+        standard_delivery = Delivery.new(:standard, 10.0)
+        broadcaster_1 = Broadcaster.new(1, 'Viacom')
+        broadcaster_2 = Broadcaster.new(2, 'Disney')
         broadcaster_3 = Broadcaster.new(3, 'Discovery')
-        # items = ["Discovery", "express", 10.0]
-        items = [[broadcaster_3, express_delivery]]
-        subtotal = 20.0
+        broadcaster_4 = Broadcaster.new(4, 'ITV')
+        items = [[broadcaster_1, express_delivery],[broadcaster_2, standard_delivery],[broadcaster_3, standard_delivery],[broadcaster_4, standard_delivery]]
+        subtotal = 50.0
+        discounts = 5.0
+        total = 45.0
         material_id = 'WNP/SWCL001/010'
-        result = "Order for WNP/SWCL001/010:\nbroadcaster          | delivery | price   \n-------------------- | -------- | --------\nDiscovery            | express  | $20     \n-------------------- | -------- | --------\nSubtotal: $20.0"
-        expect(test_order.output(items, subtotal, material_id, discounts, total)).to eq(result)
+        discounts =
+        # result = "Order for WNP/SWCL001/010:\nbroadcaster          | delivery | price   \n-------------------- | -------- | --------\nDiscovery            | express  | $20     \n-------------------- | -------- | --------\nSubtotal: $20.0"
+        expect(test_order.output(items, subtotal, material_id, discounts, total)).to be_a(String)
       end
 
     end
