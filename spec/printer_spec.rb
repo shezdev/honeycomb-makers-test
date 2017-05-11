@@ -8,7 +8,7 @@ describe "Printer module" do
     context "when invoked" do
       it "takes the items in the order and the order subtotal" do
         test_order = order.new
-        expect(test_order).to respond_to(:output).with(3).argument
+        expect(test_order).to respond_to(:output).with(5).argument
       end
 
       it "prints an order" do
@@ -19,7 +19,7 @@ describe "Printer module" do
         subtotal = 20.0
         material_id = 'WNP/SWCL001/010'
         result = "Order for WNP/SWCL001/010:\nbroadcaster          | delivery | price   \n-------------------- | -------- | --------\nDiscovery            | express  | $20     \n-------------------- | -------- | --------\nSubtotal: $20.0"
-        expect(test_order.output(items, subtotal, material_id)).to eq(result)
+        expect(test_order.output(items, subtotal, material_id, discounts, total)).to eq(result)
       end
 
     end
