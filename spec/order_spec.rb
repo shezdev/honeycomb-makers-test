@@ -6,7 +6,8 @@ describe "Order" do
   let(:broadcaster_1) { Broadcaster.new 1, 'Viacom' }
   let(:broadcaster_2) { Broadcaster.new 2, 'Disney' }
   let(:broadcaster_3) { Broadcaster.new 3, 'Discovery' }
-  let (:standard_delivery) {Delivery.new :standard, 10}
+  let(:broadcaster_4) { Broadcaster.new 4, 'ITV' }
+  let (:standard_delivery) {Delivery.new :standard, 10.0}
   let (:express_delivery) {Delivery.new :express, 20.0}
 
   describe "#initialize" do
@@ -75,13 +76,24 @@ describe "Order" do
   end
 
   describe "#addDiscount" do
-    context "Adds a discount to order if applicable" do
-      it "updates the total" do
+    context "Express delivery drops to $15 if 2+ materials sent via express delivery" do
+      it "updates the total spend on materials " do
         order = Order.new(material)
         order.add broadcaster_2, express_delivery
         order.add broadcaster_3, express_delivery
         discount = 10.0
         expect(order.addDiscount(discount)).to eq(30.0)
+      end
+    end
+    context "10% off if 2+ materials sent via express delivery" do
+      it "updates the total spend on materials " do
+        order = Order.new(material)
+        order.add broadcaster_1, express_delivery
+        order.add broadcaster_2, standard_delivery
+        order.add broadcaster_3, standard_delivery
+        order.add broadcaster_4, standard_delivery
+        discount = 5.0
+        expect(order.addDiscount(discount)).to eq(45.0)
       end
     end
   end

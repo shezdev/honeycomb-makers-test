@@ -41,7 +41,7 @@ describe "Promotion" do
           broadcaster_1 = Broadcaster.new(1, 'Viacom')
           broadcaster_2 = Broadcaster.new(2, 'Disney')
           broadcaster_3 = Broadcaster.new(3, 'Discovery')
-          broadcaster_4 = Broadcaster.new(3, 'Discovery')
+          broadcaster_4 = Broadcaster.new(4, 'ITV')
           items = [[broadcaster_1, express_delivery],[broadcaster_2, standard_delivery],[broadcaster_3, standard_delivery],[broadcaster_4, standard_delivery]]
           expect(test_order.expDeliveryDownTo15(items)).to eq(45)
         end
