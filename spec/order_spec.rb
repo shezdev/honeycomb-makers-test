@@ -74,4 +74,17 @@ describe "Order" do
     end
   end
 
+  describe "#addDiscount" do
+    context "Adds a discount to order if applicable" do
+      it "should update the total" do
+        order = Order.new(material)
+        order.add broadcaster_2, express_delivery
+        order.add broadcaster_3, express_delivery
+        order.checkPromotion
+        expect(order.total).to eq(30)
+      end
+    end
+  end
+
+
 end
