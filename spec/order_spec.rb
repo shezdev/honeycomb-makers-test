@@ -72,6 +72,16 @@ describe "Order" do
         order.add broadcaster_3, express_delivery
         expect(order.checkPromotion).to eq(30.0)
       end
+      context "Spend over $30 to get 10% off" do
+        it "updates the total spend on materials " do
+          order = Order.new(material)
+          order.add broadcaster_1, express_delivery
+          order.add broadcaster_2, standard_delivery
+          order.add broadcaster_3, standard_delivery
+          order.add broadcaster_4, standard_delivery
+          expect(order.checkPromotion).to eq(45.0)
+        end
+      end
     end
   end
 
