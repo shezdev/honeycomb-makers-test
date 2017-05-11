@@ -66,11 +66,11 @@ describe "Order" do
 
   describe "#checkPromotion" do
     context "Send 2 or more materials via express delivery and the price for express delivery drops to $15" do
-      it "update the total cost with discount applied from $40 to $30" do
+      it "updates the total spend on materials" do
         order = Order.new(material)
         order.add broadcaster_2, express_delivery
         order.add broadcaster_3, express_delivery
-        expect(order.checkPromotion).to eq(30.0)
+        expect(order.checkPromotion).to eq(26.0)
       end
       context "Spend over $30 to get 10% off" do
         it "updates the total spend on materials " do
