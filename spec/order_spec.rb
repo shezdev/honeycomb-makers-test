@@ -58,7 +58,7 @@ describe "Order" do
         items = [[broadcaster_3, express_delivery]]
         subtotal = 20.0
         material_id = 'WNP/SWCL001/010'
-        expect(order.print_output(items, subtotal, material_id)).to be_a(String)
+        expect(order.print_output).to be_a(String)
       end
     end
   end

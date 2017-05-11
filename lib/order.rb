@@ -18,4 +18,8 @@ class Order
     subtotal = items.inject(0) { |memo, (_, delivery)| memo += delivery.price }
   end
 
+  def print_output
+    output(items, getSubtotal, material.identifier)
+  end
+
 end
