@@ -10,4 +10,8 @@ module Promotion
     end
   end
 
+  def over30get10Off(items)
+  end
+
+
 end
