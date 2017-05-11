@@ -15,7 +15,7 @@ describe "Order" do
       end
       it "has an empty items array" do
         order = Order.new(material)
-        expect { (order.items).should be_empty }
+        expect(order.items).to eq([])
       end
     end
   end
@@ -26,9 +26,8 @@ describe "Order" do
         order = Order.new(material)
         broadcaster_A = "A"
         delivery_B = "B"
-        items = []
         order.add(broadcaster_A, delivery_B)
-        expect { (items).to eq("A", "B") }
+        expect(order.items).to eq([["A", "B"]])
       end
     end
   end
