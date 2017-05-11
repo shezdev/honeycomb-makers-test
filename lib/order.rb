@@ -5,11 +5,12 @@ class Order
   include Promotion
   include Printer
 
-  attr_accessor :material, :items
+  attr_accessor :material, :items, :total
 
   def initialize(material)
     self.material = material
     self.items = []
+    self.total = 0
   end
 
   def add(broadcaster, delivery)
@@ -26,6 +27,10 @@ class Order
 
   def checkPromotion
     expDeliveryDownTo15(items)
+  end
+
+  def addDiscount(discount)
+    total = getSubtotal - discount
   end
 
 end
