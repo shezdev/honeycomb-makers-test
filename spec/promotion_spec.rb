@@ -11,12 +11,11 @@ describe "Promotion" do
 
     describe "#expDeliveryDownTo15" do
       context "when invoked" do
-        it "checks and applies discount to order" do
+        it "checks and calculates discount on order" do
         order1 = order.new(material)
         order1.add(broadcaster_1, express_delivery)
         order1.add(broadcaster_3, express_delivery)
-        order.checkPromotion
-        expect(order.getTotalCost).to eq(30)
+        expect(order.expDeliveryDownTo15).to eq(10)
         end
       end
     end
