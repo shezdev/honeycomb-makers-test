@@ -35,6 +35,12 @@ describe "Order" do
 
   describe "#getSubtotal" do
     context "returns the total cost of items before any discounts" do
+
+      it "should be empty when there are no items" do
+        order = Order.new(material)
+        expect(order.getSubtotal).to eq(0)
+      end
+
       it "should get the sub total from the items list" do
         order = Order.new(material)
         order.add(broadcaster_1, standard_delivery)
