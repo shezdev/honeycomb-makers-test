@@ -4,7 +4,7 @@ require_relative 'promotion'
 class Order
   include Printer
   include Promotion
-  
+
   attr_accessor :material, :items
 
   def initialize(material)
@@ -22,6 +22,10 @@ class Order
 
   def print_output
     output(items, getSubtotal, material.identifier)
+  end
+
+  def checkPromotion
+    expDeliveryDownTo15(items)
   end
 
 end
