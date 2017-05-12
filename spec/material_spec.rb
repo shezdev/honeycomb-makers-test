@@ -1,4 +1,4 @@
-require "./lib/Material"
+require "Material"
 
 describe Material do
   subject(:material) {described_class.new}
