@@ -70,7 +70,7 @@ describe "Order" do
         order = Order.new(material)
         order.add broadcaster_2, express_delivery
         order.add broadcaster_3, express_delivery
-        expect(order.checkPromotion).to eq(26.0)
+        expect(order.checkPromotion).to eq(10.0)
       end
       context "Spend over $30 to get 10% off" do
         it "updates the total spend on materials " do
@@ -79,7 +79,7 @@ describe "Order" do
           order.add broadcaster_2, standard_delivery
           order.add broadcaster_3, standard_delivery
           order.add broadcaster_4, standard_delivery
-          expect(order.checkPromotion).to eq(45.0)
+          expect(order.checkPromotion).to eq(5.0)
         end
       end
     end
@@ -92,7 +92,7 @@ describe "Order" do
         order.add broadcaster_2, express_delivery
         order.add broadcaster_3, express_delivery
         discount = 10.0
-        expect(order.addDiscount(discount)).to eq(30.0)
+        expect(order.addDiscount(discount)).to eq(-10.0)
       end
     end
     context "10% off if 2+ materials sent via express delivery" do
@@ -103,7 +103,7 @@ describe "Order" do
         order.add broadcaster_3, standard_delivery
         order.add broadcaster_4, standard_delivery
         discount = 5.0
-        expect(order.addDiscount(discount)).to eq(45.0)
+        expect(order.addDiscount(discount)).to eq(-5.0)
       end
     end
   end

@@ -10,7 +10,7 @@ module Promotion
   end
 
   def over30get10Off(total)
-    if total > 31.0
+    if (total > 31.0)
       discount2 = total * 0.1
     else
       discount2 = 0
