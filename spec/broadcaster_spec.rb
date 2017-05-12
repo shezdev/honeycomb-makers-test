@@ -1,4 +1,4 @@
-require "Broadcaster"
+require "./lib/Broadcaster"
 
 describe Broadcaster do
   subject(:broadcaster) { described_class.new}

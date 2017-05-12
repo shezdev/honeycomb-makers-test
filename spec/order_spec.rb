@@ -1,4 +1,4 @@
-require "Order"
+require "./lib/Order"
 
 describe "Order" do
   subject(:order) { described_class.new }

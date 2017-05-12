@@ -1,4 +1,4 @@
-require "Printer"
+require "./lib/Printer"
 
 describe "Printer module" do
   let(:order) { Class.new { include Printer } }

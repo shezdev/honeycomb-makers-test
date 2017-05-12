@@ -1,4 +1,4 @@
-require "Delivery"
+require "./lib/Delivery"
 
 describe Delivery do
   subject(:delivery) {described_class.new}

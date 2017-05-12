@@ -1,4 +1,4 @@
-require "Promotion"
+require "./lib/Promotion"
 
 describe "Promotion" do
 
@@ -34,6 +34,7 @@ describe "Promotion" do
         end
         it "checks and calculates discount on order" do
           test_order = order.new
+
           total = 50
           expect(test_order.over30get10Off(total)).to eq(5.0)
         end
