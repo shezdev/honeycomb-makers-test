@@ -29,7 +29,7 @@ module Printer
       result << output_separator
       result << "Total: $#{total}"
       result << output_separator
-      
+
     end.join("\n")
   end
 

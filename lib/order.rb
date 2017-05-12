@@ -12,7 +12,6 @@ class Order
     self.items = []
     @total = 0
     @discounts = 0
-    @d = []
   end
 
   def add(broadcaster, delivery)
@@ -24,20 +23,21 @@ class Order
   end
 
   def checkPromotion
-    promotion1 = expDeliveryDownTo15(items)
-    promotion2 = over30get10Off(items)
-    @discounts = promotion1 + promotion2
-    if @discounts > 0
-      addDiscount(@discounts)
+    @total = getSubtotal
+    if (promotion1 = expDeliveryDownTo15(items)) > 0
+      addDiscount(promotion1)
     end
+    if (promotion2 = over30get10Off(@total))
+      addDiscount(promotion2)
+    end
+    @discounts = promotion1 + promotion2
   end
 
-  def addDiscount(current_discounts)
-    @total = getSubtotal - current_discounts
+  def addDiscount(current_discount)
+    @total = @total - current_discount
   end
 
   def print_output
-    print "total is #{@total}"
     output(items, getSubtotal, material.identifier, @discounts, @total)
   end
 
