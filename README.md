@@ -1,4 +1,5 @@
 # Honeycomb Engineering Test - Makers Edition
+[![Coverage Status](https://coveralls.io/repos/github/shezdev/honeycomb-makers-test/badge.svg?branch=master)](https://coveralls.io/github/shezdev/honeycomb-makers-test?branch=master)
 
 **Solution built by [Shereen Finney](https://github.com/shezdev) on 12th May 2017**
 
