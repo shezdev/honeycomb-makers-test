@@ -23,6 +23,13 @@ module Printer
 
       result << output_separator
       result << "Subtotal: $#{subtotal}"
+
+      result << output_separator
+      result << "Discounts: -#{discounts}"
+      result << output_separator
+      result << "Total: $#{total}"
+      result << output_separator
+      
     end.join("\n")
   end
 
