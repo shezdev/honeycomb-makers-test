@@ -1,10 +1,16 @@
-require "./lib/Promotion"
+require "./lib/promotion"
+require "./lib/broadcaster"
+require "./lib/order"
+require "./lib/delivery"
+require "./lib/material"
+require "timecop"
 
 describe "Promotion" do
 
   describe "Promotion module" do
-    let(:order) { Class.new { include Promotion } }
     let (:material) { Material.new 'WNP/SWCL001/010'}
+    let(:order) { Order.new(material) }
+
     let(:broadcaster_1) { Broadcaster.new 1, 'Viacom' }
     let(:broadcaster_2) { Broadcaster.new 2, 'Disney' }
     let(:broadcaster_3) { Broadcaster.new 3, 'Discovery' }
@@ -15,28 +21,45 @@ describe "Promotion" do
     describe "#expDeliveryDownTo15" do
       context "when invoked" do
         it "receives the items from the order" do
-          test_order = order.new
-          expect(test_order).to respond_to(:expDeliveryDownTo15).with(1).argument
+
+          expect(order).to respond_to(:expDeliveryDownTo15).with(1).argument
         end
         it "checks and calculates discount on order" do
-          test_order = order.new
+
           items = [[broadcaster_1, express_delivery],[broadcaster_2, express_delivery]]
-          expect(test_order.expDeliveryDownTo15(items)).to eq(10)
+          expect(order.expDeliveryDownTo15(items)).to eq(10)
         end
       end
+    end
+
+    describe "#july_over_30_get_20_off" do
+
+      before do
+        t = Time.local(2017, 7, 2)
+        Timecop.travel(t)
+      end
+
+      it "returns a discount of 20% if total spend is over $30 in July" do
+        total = 100
+        d = Date.new(2017,7,2)
+        expect(Date.today).to eq(d)
+        expect(order.july_over_30_get_20_off(total)).to eq(20)
+      end
+
+
     end
 
     describe "#over30get10Off" do
       context "when invoked" do
         it "receives the items from the order" do
-          test_order = order.new
-          expect(test_order).to respond_to(:over30get10Off).with(1).argument
+
+          expect(order).to respond_to(:over30get10Off).with(1).argument
         end
         it "checks and calculates discount on order" do
-          test_order = order.new
+
 
           total = 50
-          expect(test_order.over30get10Off(total)).to eq(5.0)
+          expect(order.over30get10Off(total)).to eq(5.0)
         end
       end
     end

@@ -27,7 +27,7 @@ class Order
     if (promotion1 = expDeliveryDownTo15(items)) > 0
       addDiscount(promotion1)
     end
-    if (promotion2 = over30get10Off(@total))
+    if (promotion2 = july_over_30_get_20_off(@total))
       addDiscount(promotion2)
     end
     @discounts = promotion1 + promotion2
